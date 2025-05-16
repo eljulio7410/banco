@@ -1,3 +1,5 @@
+package modelo;
+
 public class CuentaBancaria {
     //  atributos privados
     private String numeroCuenta;
@@ -9,13 +11,37 @@ public class CuentaBancaria {
         this.titular = titular;
         this.saldo = saldo;
     }
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
     //    metodo publico depositar
     public void depositar(double valor) {
-        this.saldo += valor;
+        if (valor > 0) {
+            this.saldo += valor;
+        }
     }
     //    metodo publico retirar
     public void retirar(double valor) {
-        if (this.saldo >= valor) {
+        if (valor > 0 && this.saldo >= valor) {
             this.saldo -= valor;
         }else {
             System.out.println("Saldo insuficiente");
@@ -25,7 +51,7 @@ public class CuentaBancaria {
     public void imprimir() {
         System.out.println("Numero Cuenta: " + this.numeroCuenta);
         System.out.println("Titular: " + this.titular);
-        System.out.println("Saldo: " + this.saldo);
+        System.out.println("Saldo: $" + this.saldo);
         System.out.println("-----------------");
     }
     //    transferir saldo
@@ -33,7 +59,7 @@ public class CuentaBancaria {
         if (valor > 0 && this.saldo >= valor) {
             this.saldo -= valor;
             destino.depositar(valor);
-            System.out.println("transferencia de $ " + valor + " realizada a la cuenta de " + destino.titular);
+            System.out.println("transferencia de $" + valor + " realizada a la cuenta de " + destino.titular);
         }else {
             System.out.println("Saldo insuficiente");
         }
