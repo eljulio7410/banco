@@ -27,16 +27,22 @@ public class Menu {
                 switch (opcion) {
                     case 1:
                         realizarDeposito();
+                        break;
                     case 2:
                         realizarRetiro();
+                        break;
                     case 3:
                         realizarTransferencia();
+                        break;
                     case 4:
                         banco.mostrarCuentas();
+                        break;
                     case 5:
                         System.out.println("Gracias por usar el sistema");
+                        break;
                     default:
                         System.out.println("Opcion no valida");
+
 
                 }
             } while (opcion != 5);
